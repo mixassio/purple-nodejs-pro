@@ -56,7 +56,7 @@ function toWords(number: number|string, asOrdinal?: boolean): string {
     return words.replace('zero-', '');
 }
 
-export function generateWords(number: number, words: string[] | undefined = undefined): string {
+export function generateWords(number: number, words?: string[]): string {
     let remainder: number = 0;
     let word: string = '';
 
@@ -73,7 +73,7 @@ export function generateWords(number: number, words: string[] | undefined = unde
         words.push('minus');
         number = Math.abs(number);
     }
-    if (number < TENTHS_LESS_THAN_HUNDRED.twenty) {
+    if (number <= LESS_THAN_TWENTY.nineteen) {
         remainder = 0;
         word = LESS_THAN_TWENTY[number];
     } else if (number < EXPONENT.ONE_HUNDRED) {
